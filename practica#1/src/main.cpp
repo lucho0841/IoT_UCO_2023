@@ -2,12 +2,12 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 
-const char* ssid = "SSID";
-const char* password = "Password";
+const char* ssid = "CLARO_WIFIE0";
+const char* password = "CLAROI05933";
 
 ESP8266WebServer server(80);
 
-int ledPin = 2;
+int ledConection = 5;
 bool ledState = LOW;
 
 void handleRoot() {
@@ -97,15 +97,15 @@ void handlePost() {
     } else if(command == "off") {
       ledState = LOW;
     }
-    digitalWrite(ledPin, ledState);
+    digitalWrite(ledConection, ledState);
   }
   server.sendHeader("Location", "/");
   server.send(303);
 }
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, ledState);
+  pinMode(ledConection, OUTPUT);
+  digitalWrite(ledConection, ledState);
 
   Serial.begin(9200);
   WiFi.begin(ssid, password);
